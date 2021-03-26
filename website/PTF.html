@@ -1,0 +1,98 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Locally Aware Piecewise Transformation Fields for 3D Human Mesh Registration</title>
+
+<!-- Meta tags for search engines to crawl -->
+<meta name="robots" content="index,follow">
+<meta name="description" content="Registering point clouds of dressed humans to parametric human models is a challenging task in computer vision. Traditional approaches often rely on heavily engineered pipelines that require accurate manual initialization of human poses and tedious post-processing. More recently, learning-based methods are proposed in hope to automate this process. We observe that pose initialization is key to accurate registration but existing methods often fail to provide accurate pose initialization. One major obstacle is that, despite recent effort on rotation representation learning in neural networks, regressing joint rotations from point clouds or images of humans is still very challenging. To this end, we propose novel piecewise transformation fields (PTF), a set of functions that learn 3D translation vectors to map any query point in posed space to its correspond position in rest-pose space. We combine PTF with multi-class occupancy networks, obtaining a novel learning-based framework that learns to simultaneously predict shape and per-point correspondences between the posed space and the canonical space for clothed human. Our key insight is that the translation vector for each query point can be effectively estimated using the point-aligned local features; consequently, rigid per bone transformations and joint rotations can be obtained efficiently via a least-square fitting given the estimated point correspondences, circumventing the challenging task of directly regressing joint rotations from neural networks. Furthermore, the proposed PTF facilitate canonicalized occupancy estimation, which greatly improves generalization capability and results in more accurate surface reconstruction with only half of the parameters compared with the state-of-the-art. Both qualitative and quantitative studies show that fitting parametric models with poses initialized by our network results in much better registration quality, especially for extreme poses.">
+<meta name="keywords" content="3D body, neural implicit functions">
+<!--<link rel="author" href="http://wywu.github.io">-->
+
+<!-- Fonts and stuff -->
+<link href="./resources/css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./resources/project.css" media="screen">
+<link rel="stylesheet" type="text/css" media="screen" href="./resources/iconize.css">
+<script async="" src="./resources/prettify.js"></script>
+
+
+</head>
+
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+
+		<div class="section head">
+    <h1><font size="5">Locally Aware Piecewise Transformation Fields<br>for 3D Human Mesh Registration</font></h1>
+
+	<div class="authors">
+		<a href="https://taconite.github.io/">Shaofei Wang</a><sup>1</sup>
+	  	<a href="http://www.cvlibs.net/">Andreas Geiger</a><sup>2,3</sup>&nbsp;
+	  	<a href="https://inf.ethz.ch/people/person-detail.MjYyNzgw.TGlzdC8zMDQsLTg3NDc3NjI0MQ==.html">Siyu Tang</a><sup>1</sup>
+	</div>
+
+	<div class="affiliations">
+	  	<sup>1</sup><a href="https://ethz.ch/en.html">ETH Zurich<br></a>
+	  	<sup>2</sup><a href="https://is.mpg.de">Max Planck Institute for Intelligent Systems<br></a>
+	  	<sup>3</sup><a href="https://uni-tuebingen.de">University of Tübingen<br></a>
+	</div>
+
+	<ul id="tabs">
+		<li><a href="./PTF.html" name="#tab1">PTF</a></li>
+	</ul>
+	</div>
+      <center><img src="./resources/PTF-teaser.png" border="0" width="90%"></center>
+    <div class="section abstract">
+	<h2>Abstract</h2>
+	<p>
+Registering point clouds of dressed humans to parametric human models is a challenging task in computer vision. Traditional approaches often rely on heavily engineered pipelines that require accurate manual initialization of human poses and tedious post-processing. More recently, learning-based methods are proposed in hope to automate this process. We observe that pose initialization is key to accurate registration but existing methods often fail to provide accurate pose initialization. One major obstacle is that, despite recent effort on rotation representation learning in neural networks, regressing joint rotations from point clouds or images of humans is still very challenging. To this end, we propose novel piecewise transformation fields (PTF), a set of functions that learn 3D translation vectors to map any query point in posed space to its correspond position in rest-pose space. We combine PTF with multi-class occupancy networks, obtaining a novel learning-based framework that learns to simultaneously predict shape and per-point correspondences between the posed space and the canonical space for clothed human. Our key insight is that the translation vector for each query point can be effectively estimated using the point-aligned local features; consequently, rigid per bone transformations and joint rotations can be obtained efficiently via a least-square fitting given the estimated point correspondences, circumventing the challenging task of directly regressing joint rotations from neural networks. Furthermore, the proposed PTF facilitate canonicalized occupancy estimation, which greatly improves generalization capability and results in more accurate surface reconstruction with only half of the parameters compared with the state-of-the-art. Both qualitative and quantitative studies show that fitting parametric models with poses initialized by our network results in much better registration quality, especially for extreme poses.
+	</p>
+    </div>
+<div class="section downloads">
+	<h2>Videos</h2>
+    <center>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TvLoGLVF70k" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</center></div>
+
+<div class="section downloads">
+<h2>Downloads</h2>
+<center>
+
+<div class="container">
+	<p>
+	<a href="https://arxiv.org/abs/2104.08160"><button type="button" class="btn-slide-line center">
+		<span>arXiv</span>
+    </button></a>
+	<a href="https://github.com/taconite/PTF"><button type="button" class="btn-slide-line center">
+		<span>Code</span>
+	</button></a>
+	</p>
+	</div>
+
+</center>
+</div>
+
+<div class="section list">
+<h2>Citation</h2>
+
+<div class="section bibtex">
+<pre>@inproceedings{PTF:CVPR:2021,
+  author = {Shaofei Wang and Andreas Geiger and Siyu Tang},
+  title = {Locally Aware Piecewise Transformation Fields for 3D Human Mesh Registration},
+  booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2021}
+}
+</pre>
+</div>
+</div>
+
+<div class="section contact">
+	<h2>Contact</h2>
+		 For questions, please contact Shaofei Wang:<br><a href="mailto:shaofei.wang@inf.ethz.ch">shaofei.wang@inf.ethz.ch</a>
+      </div>
+    </div>
+  </div>
+
+</body></html>
+
