@@ -1,0 +1,51 @@
+method: ptf
+data:
+  dim: 3
+  tf_dim: 3
+  dataset: cape
+  path: data/CAPE_sampling-rate-5
+  input_type: pointcloud
+  input_pointcloud_n: 5000
+  input_pointcloud_noise: 0.001
+  use_global_trans: false   # IP-Net doesn't use this flag anyway
+  use_aug: true
+  normalized_scale: true
+  points_subsample: 10000 
+  points_uniform_ratio: 0.2
+  train_split: ['00032', '00096', '00127', '00134', '00145', '02474', '03223', '03284', '03331', '03375', '03383', '03394']
+  val_split: ['00122', '00159', '00215']
+  test_split: ['00122', '00159', '00215']
+model:
+  encoder: pointnet_conv
+  decoder: ipnet 
+  transform_field: null
+  encoder_kwargs: {'hidden_dim': 256, 'scatter_type': mean, 'unet': true, 'unet3d': false, 'plane_type': ['xz', 'xy', 'yz'], 'plane_resolution': 128, 'padding': 1.0}
+  decoder_kwargs: {'hidden_size': 256, 'num_joints': 14, 'double_layer': true}
+  c_dim: 96
+  z_dim: 0
+training:
+  gpus: [0]
+  out_dir:  out/cape/ipnet_decoder-width-256_ce-ce_w-skin-1e-1_conv-encoder_hidden-256_plane128x3_softmax_npts-5000_CAPE-release-with-aug_1gpus
+  batch_size: 12
+  model_selection_metric: iou
+  model_selection_mode: maximize
+  visualize_every: 20000
+  validate_every: 20000
+  backup_every: 20000
+  max_operator: softmax
+  occ_loss_type: ce
+  skin_loss_type: ce
+  skinning_weight: 0.1
+  max_iterations: 200000
+  use_corr_loss_pred: false
+test:
+  threshold: 0.2
+  eval_mesh: true
+generation:
+  batch_size: 12
+  refine: false
+  vis_n_outputs: 0
+  n_x: 128
+  n_z: 1
+  resolution_0: 256
+  upsampling_steps: 0

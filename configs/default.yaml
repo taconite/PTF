@@ -1,0 +1,67 @@
+method: onet
+data:
+  path: data/CAPE_voxels-res-64_sampling-rate-5
+  dataset: cape
+  use_global_trans: false
+  use_aug: false
+  normalized_scale: false
+  num_joints: 14
+  input_type: pointcloud
+  voxel_res: 128
+  train_split: train
+  val_split: val
+  test_split: test
+  tf_dim: 3
+  dim: 3
+  points_subsample: 1024
+  points_uniform_ratio: 0.5
+  input_pointcloud_n: 300
+  input_pointcloud_noise: 0.001
+  use_abs_bone_transforms: false
+  query_on_clothed: false
+model:
+  decoder: ipnet
+  encoder: pointnet_conv
+  transform_field: ptf_groupnorm
+  decoder_kwargs: {}
+  transform_field_kwargs: {}
+  encoder_kwargs: {}
+  gpus: [0]
+  c_dim: 512
+  z_dim: 0
+  num_joints: 14
+training:
+  out_dir:  out/default
+  batch_size: 16
+  print_every: 10
+  visualize_every: 2000
+  checkpoint_every: 1000
+  validate_every: 2000
+  backup_every: 100000
+  model_selection_metric: iou
+  model_selection_mode: maximize
+  max_operator: lse
+  occ_loss_type: l2
+  skin_loss_type: l2
+  fl_gamma: 2.0
+  fl_alpha: 0.25
+  skinning_weight: 0.5
+  corr_weight: 1.0
+  use_corr_loss_pred: false
+  max_iterations: -1
+  max_epochs: -1 
+test:
+  threshold: 0.5
+  eval_mesh: true
+  model_file: model_best.pt
+generation:
+  batch_size: 12
+  refinement_step: 0
+  vis_n_outputs: 30
+  generate_mesh: true
+  generate_pointcloud: true
+  generation_dir: generation
+  resolution_0: 32
+  upsampling_steps: 2
+  simplify_nfaces: null
+  copy_input: true

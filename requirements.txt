@@ -1,0 +1,17 @@
+tensorboardX==2.2
+torchgeometry==0.1.2
+trimesh==3.9.20
+tqdm==4.61.1
+pyopengl==3.1.5
+scikit-image==0.18.1
+plyfile==0.7.4
+pyrender==0.1.45
+scipy==1.6.3
+pyyaml==5.4.1
+cython==0.29.23
+matplotlib==3.4.2
+scikit-learn==0.24.2
+pandas==1.2.4
+chumpy==0.70
+pptk==0.1.0
+smplpytorch==0.0.8
